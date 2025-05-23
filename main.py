@@ -1,14 +1,20 @@
 from pkg.plugin.context import register, handler, llm_func, BasePlugin, APIHost, EventContext
 from pkg.plugin.events import *  # 导入事件类
+from plugins.RealDreamPlugin.PILimg.pilimg import ImageTextEditor
+import os
 
+image_path=os.path.join('PILimg',"tool", "img", "input.jpg"),
+output_path=os.path.join('PILimg', "output", "result.jpg"),
+font_path=os.path.join('PILimg',"tool", "font", "SourceHanSansSC-VF.ttf")
 
 # 注册插件
-@register(name="Hello", description="hello world", version="0.1", author="RockChinQ")
+@register(name="RealDreamPlugin", description="RealDreamPlugin", version="0.1", author="sheetung")
 class MyPlugin(BasePlugin):
 
     # 插件加载时触发
     def __init__(self, host: APIHost):
-        pass
+        # pass
+        self.PILImg = ImageTextEditor(image_path,)
 
     # 异步初始化
     async def initialize(self):
